@@ -1,0 +1,81 @@
+@media screen and (max-width: 750px) {
+    .interface-pokedex {
+        border-left: 5vh solid var(--color-border);
+        border-right: 5vh solid var(--color-border);
+    }
+    #pesquisa {
+        margin-top: 10vh;
+    }
+    .conteudo h2 {
+        font-size: 1.8rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    #pesquisa {
+        margin-top: 10vh;
+    }
+    #pesquisa ::placeholder {
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    #pesquisa {
+        margin-top: 8vh;
+    }
+    .conteudo h2 {
+        font-size: 1.6rem;
+    }
+}
+@media screen and (max-width: 440px) {
+    #pesquisa {
+        width: 40vw;
+    }
+    .pokemons li {
+        width: 150px;
+    }
+}
+@media screen and (max-width: 419px) {
+    .pokemons li {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    #pesquisa {
+        margin-top: 10vh;
+        width: 50vw;
+    }
+    #pesquisa :placeholder-shown {
+        width: 50vw;
+    }
+    .conteudo h2 {
+        font-size: 1.6rem;
+    }
+    .pokebola img {
+        width: 60px;
+    }
+    .link a {
+        font-size: 1rem;
+        padding: 5px;
+        margin-top: 10vh;
+    }
+}
+@media screen and (max-height: 1600px) {
+    .pokemons li {
+        height: 40vh;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .pokemons li {
+        height: 50vh;
+    }
+}
+@media screen and (max-height: 480px) {
+    .pokemons li {
+        height: 50vh;
+    }
+}
+
+
+
