@@ -236,20 +236,60 @@ body {
 }
 
 .info-pokemon{
-    display: flex;
+    /* display: flex;
     position: relative;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center; */
+    display: grid;
+    grid-template-areas:
+    'name name'
+    'img type-ability';
+    justify-content: space-around;
     align-items: center;
+    border: solid 5px black;
+    gap: 0;
     margin-top: 3vh;
     margin-bottom: 0;
+    padding: 0;
 }
 
 .info-pokemon img{
     /* position: absolute; */
+    grid-area: img;
     width: 120px;
     padding: 0;
     margin: 0;
+    border-right: solid 2px black;
+}
+
+.info-pokemon h1 {
+    grid-area: name;
+    border-bottom: solid 2px black;
+    width: 100%;
+}
+
+.type-ability {
+    grid-area: type-ability;
+    display: flex;
+    gap: 50px;
+
+}
+
+.class-types {
+    list-style: none;
+}
+
+.class-types h1 {
+    font-size: 1.09rem;
+}
+
+.class-abilities {
+    list-style: none;
+}
+
+.class-abilities h1 {
+    font-size: 1.09rem;
 }
 
 .btn{
