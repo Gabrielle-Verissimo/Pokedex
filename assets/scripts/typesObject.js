@@ -1,0 +1,20 @@
+export const arrTypes = [
+    {type: 'normal', color: 'grey'},
+    {type: 'fire', color: 'orange'},
+    {type: 'fighting', color: 'red'},
+    {type: 'water', color: 'blue'},
+    {type: 'flyng', color: 'purple'},
+    {type: 'grass', color: 'green'},
+    {type: 'poison', color: 'purple'},
+    {type: 'eletric', color: 'yellow'},
+    {type: 'ground', color: 'brown'},
+    {type: 'psychic', color: 'magenta'},
+    {type: 'rock', color: 'brown'},
+    {type: 'ice', color: 'blue'},
+    {type: 'bug', color: 'green'},
+    {type: 'dragon', color: 'blue'},
+    {type: 'ghost', color: 'purple'},
+    {type: 'dark', color: 'black'},
+    {type: 'steel', color: 'grey'},
+    {type: 'fairy', color: 'pink'}
+];

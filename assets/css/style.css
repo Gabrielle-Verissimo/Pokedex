@@ -189,12 +189,12 @@ body {
         transform: rotate(180deg);
     }
 }
-.link {
+.all {
     display: flex;
     position: relative;
     justify-content: center;
 }
-.link a {
+.btn-all {
     font-size: 1rem;
     color: #ffffff;
     font-family: 'Source Serif Pro';
@@ -206,8 +206,9 @@ body {
     box-shadow: 1px 0.5px 1px black;
     margin-top: 20vh;
 }
-.link:hover a {
+.btn-all:hover {
     font-size: 1.06rem;
+    cursor: pointer;
 }
 .footer-pokedex {
     display: flex;
@@ -320,4 +321,79 @@ body {
     /* background-color: white;
     color: black; */
     font-size: 1.08rem;
+    cursor: pointer;
+}
+
+.card {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30vw;
+    height: 40vh;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 3px -3px 5px 0px black;
+}
+
+.card img {
+    width: 120px;
+    padding: 0;
+    margin: 0;
+}
+
+.card h1 {
+    color: black;
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+}
+
+.card h1::first-letter {
+    text-transform: uppercase;
+}
+
+
+.card span {
+    position: relative;
+    color: black;
+    font-size: 1rem;
+    background: grey;
+    border-radius: 10px;
+    padding: 0 5px;
+    margin-top: -25px;
+    margin-bottom: 15px;
+}
+
+
+.div-types h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.list-types {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.list-types li {
+    border-radius: 10px;
+    background: green;
+    padding: 2px 8px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 
+    -1px -1px 0px #000, 
+    -1px 1px 0px #000,                    
+     1px -1px 0px #000,                  
+     1px 0px 0px #000;
+}
+
+.list-types li::first-letter {
+   text-transform: uppercase;
 }
