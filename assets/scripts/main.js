@@ -28,106 +28,64 @@ function showAllPokemons(){
 function getAll(json){
     
     const content = document.querySelector('.conteudo');
+    const h2 = document.querySelector('.conteudo > h2');
+    const divAll = document.createElement('div');
+    h2.parentNode.removeChild(h2);
+    divAll.classList.add('div-all');
 
     json.results.map(item => {
+        console.log(item.url);
         fetch(item.url)
             .then(response => response.json())
-            .then(json => customizeAll(json, content))
+            .then(json => customizeAll(json, content, divAll))
             .catch(e => console.log(e));
     })
 }
 
-function customize(){
-    const pokebola = document.querySelector('.pokebola');
-    const divBtn = document.querySelector('.all');
-    pokebola.parentNode.removeChild(pokebola);
-    divBtn.parentNode.removeChild(divBtn);
-    const content = document.querySelector('.conteudo');
-    const api = 'https://pokeapi.co/api/v2/pokemon/1/';
-    fetch(api)
-        .then(response => response.json())
-        .then(json => {
-            const imgPokemon = json.sprites.front_default;
-            const pokemonId = '#' + [json.id];
-            const names = [json.name];
-            let types = [];
-            json.types.map(item => {
-                types.push(item.type.name);
-            })
 
-            const div = document.createElement('div');
-            const img = document.createElement('img');
-            const id = document.createElement('span');
-            const name = document.createElement('h1');
-            const divTypes = document.createElement('div');
-            const h3 = document.createElement('h3');
-            const listTypes = document.createElement('ul');
-            h3.innerHTML = 'Tipo:';
-            listTypes.classList.add('list-types');
-            divTypes.appendChild(h3);
-            for(let i = 0; i < types.length; i++){
-                const type = document.createElement('li');
-                for(let item of arrTypes){
-                    if(types[i] == item.type){
-                        type.style.backgroundColor = `${item.color}`;
-                    }
-                }
-                type.innerHTML = `${types[i]}`;
-                listTypes.appendChild(type);
-            }
+function customizeAll(json, content, divAll){
 
-            divTypes.appendChild(listTypes);
-            img.setAttribute('src', imgPokemon);
-            id.innerHTML = `${pokemonId}`;
-            name.innerHTML = `${names}`;
-            divTypes.classList.add('div-types');
-            div.appendChild(img);
-            div.appendChild(id);
-            div.appendChild(name);
-            div.appendChild(divTypes)
-            div.classList.add('card');
-            content.appendChild(div);
-        })
-        .catch(e => console.l(e));                                                                                                                                                                                                               
-}
-
-function customizeAll(json, content){
-
-    const divAll = document.createElement('div');
-    const imgPokemon = [json.sprites.front_default];
-    const pokemonId = [json.id];
-    const names = [json.name];
+    const imgPokemon = json.sprites.front_default;
+    const pokemonId = '#' + [json.id];
+    const name = [json.name];
     let types = [];
     json.types.map(item => types.push(item.type.name));
 
-    for(let i = 0; i < names.length; i++){
- 
-        const divCard = document.createElement('div');
-        const img = document.createElement('img');
-        const id = document.createElement('h2');
-        const name = document.createElement('h1');
-        const divTypes = document.createElement('div');
-        const titleTypes = document.createElement('h2');
-        const listTypes = document.createElement('ul');
-        const itemList = document.createElement('li');
-        //img.setAttribute('src', imgPokemon[i]);
-        id.innerHTML = `${pokemonId[i]}`;
-        name.innerHTML = `${names[i]}`;
-        titleTypes.innerHTML = 'Tipo:';
-        listTypes.appendChild(itemList);
-        divTypes.appendChild(titleTypes);
-        divTypes.appendChild(listTypes);
-        div.appendChild(img);
-        divCard.appendChild(id);
-        divCard.appendChild(name);
-        //divCard.appendChild(divTypes);
-        listTypes.classList.add('list-types');
-        divTypes.classList.add('div-types');
-        divCard.classList.add('card');
-        
+    const divCard = document.createElement('div');
+    const img = document.createElement('img');
+    const id = document.createElement('span');
+    const tagName = document.createElement('h1');
+    const divTypes = document.createElement('div');
+    const titleTypes = document.createElement('h3');
+    const listTypes = document.createElement('ul');
+    
+    titleTypes.innerHTML = 'Tipo: ';
+    listTypes.classList.add('list-types');
+    divTypes.appendChild(titleTypes);
+
+    for(let i = 0; i < types.length; i++){
+        const type = document.createElement('li');
+        for(let item of arrTypes){
+            if(types[i] == item.type){
+                type.style.backgroundColor = `${item.color}`;
+            }  
+        }
+        type.innerHTML = `${types[i]}`;
+        listTypes.appendChild(type);          
     }
 
-    content.appendChild(divCard);
+    divTypes.appendChild(listTypes);
+    img.setAttribute('src', imgPokemon);
+    id.innerHTML = `${pokemonId}`;
+    tagName.innerHTML = `${name}`;
+    divTypes.classList.add('div-types');
+    divCard.appendChild(img);
+    divCard.appendChild(id);
+    divCard.appendChild(tagName);
+    divCard.appendChild(divTypes);
+    divCard.classList.add('card');
+    divAll.appendChild(divCard);
+    content.appendChild(divAll);
     // btn.addEventListener('click', () => {
     //     typeAndAbility.parentNode.removeChild(typeAndAbility);
     //     h1.innerHTML = ''

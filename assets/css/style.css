@@ -324,23 +324,29 @@ body {
     cursor: pointer;
 }
 
+.div-all {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 .card {
     background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 30vw;
-    height: 40vh;
+    width: 240px;
+    height: 280px;
     padding: 0;
     border-radius: 5px;
     box-shadow: 3px -3px 5px 0px black;
+    margin-bottom: 20px;
 }
 
 .card img {
     width: 120px;
     padding: 0;
-    margin: 0;
 }
 
 .card h1 {
@@ -361,7 +367,7 @@ body {
     background: grey;
     border-radius: 10px;
     padding: 0 5px;
-    margin-top: -25px;
+    margin-top: -10px;
     margin-bottom: 15px;
 }
 
