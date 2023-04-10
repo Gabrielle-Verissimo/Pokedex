@@ -14,10 +14,13 @@ const showAll = document.querySelector('.btn-all');
 showAll.addEventListener('click', () => showAllPokemons());  
 
 function showAllPokemons(){
-    const pokebola = document.querySelector('.pokebola');
-    const divBtn = document.querySelector('.all');
-    pokebola.parentNode.removeChild(pokebola);
-    divBtn.parentNode.removeChild(divBtn);
+
+    const content = document.querySelector('.conteudo');
+    content.parentNode.removeChild(content);
+    // const pokebola = document.querySelector('.pokebola');
+    // const divBtn = document.querySelector('.all');
+    // pokebola.parentNode.removeChild(pokebola);
+    // divBtn.parentNode.removeChild(divBtn);
     const api = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
     fetch(api) //recebe um array de 1125 pokemons
     .then(response => response.json())
@@ -25,26 +28,34 @@ function showAllPokemons(){
     .catch(e => console.log(e));
 }
 
-function getAll(json){
-    
-    const content = document.querySelector('.conteudo');
-    const h2 = document.querySelector('.conteudo > h2');
-    const divAll = document.createElement('div');
-    h2.parentNode.removeChild(h2);
-    divAll.classList.add('div-all');
+// async function getUser(userId) {
+//     let response = await fetch(`https://api.com/api/user/${userId}`);
+//     let userData = await response.json();
+//     return userData;
+// }
 
+async function getAll(json){
+    
+    const tela = document.querySelector('.tela');
+    //const h2 = document.querySelector('.conteudo > h2');
+    const divAll = document.createElement('div');
+    let urls = [];
+    //h2.parentNode.removeChild(h2);
+    divAll.classList.add('div-all');
     json.results.map(item => {
-        console.log(item.url);
-        fetch(item.url)
-            .then(response => response.json())
-            .then(json => customizeAll(json, content, divAll))
-            .catch(e => console.log(e));
+        urls.push(item.url);
+
     })
+
+    for(let url of urls){
+        let response = await fetch(url);
+        await customizeAll(response, tela, divAll);
+    }
+    
 }
 
-
-function customizeAll(json, content, divAll){
-
+async function customizeAll(response, tela, divAll){
+    const json = await response.json();
     const imgPokemon = json.sprites.front_default;
     const pokemonId = '#' + [json.id];
     const name = [json.name];
@@ -85,7 +96,7 @@ function customizeAll(json, content, divAll){
     divCard.appendChild(divTypes);
     divCard.classList.add('card');
     divAll.appendChild(divCard);
-    content.appendChild(divAll);
+    tela.appendChild(divAll);
     // btn.addEventListener('click', () => {
     //     typeAndAbility.parentNode.removeChild(typeAndAbility);
     //     h1.innerHTML = ''
