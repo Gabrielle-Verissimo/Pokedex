@@ -42,6 +42,7 @@ async function getAll(json){
     let urls = [];
     //h2.parentNode.removeChild(h2);
     divAll.classList.add('div-all');
+
     json.results.map(item => {
         urls.push(item.url);
 
@@ -79,14 +80,22 @@ async function customizeAll(response, tela, divAll){
         for(let item of arrTypes){
             if(types[i] == item.type){
                 type.style.backgroundColor = `${item.color}`;
+                type.innerHTML = `${item.typePtbr}`;
             }  
         }
-        type.innerHTML = `${types[i]}`;
+        
         listTypes.appendChild(type);          
     }
 
+    if(imgPokemon == null){
+        //console.log('entrou aqui. imgPokemon =', imgPokemon);
+        img.setAttribute('src', '../assets/pokebola.png');
+    }
+    else{
+        img.setAttribute('src', imgPokemon);
+    }
+
     divTypes.appendChild(listTypes);
-    img.setAttribute('src', imgPokemon);
     id.innerHTML = `${pokemonId}`;
     tagName.innerHTML = `${name}`;
     divTypes.classList.add('div-types');
