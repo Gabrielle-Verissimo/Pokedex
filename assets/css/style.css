@@ -355,7 +355,18 @@ body {
 }
 
 .passed {
-    margin-top: -370px;
+    /* margin-top: -370px; */
+    animation: passed 0.5s linear 1s 1 forwards;
+    /* scroll-behavior: smooth; */
+}
+
+@keyframes passed {
+    0%   {margin-top: 370px;}
+    25%  {margin-top: -123px; background: red}
+    50%  {margin-top: -246px;}
+    100% {margin-top: -370px;}
+    /* from {margin-top: 370px;}
+    to {margin-top: -370px;} */
 }
 
 /* .card:hover {

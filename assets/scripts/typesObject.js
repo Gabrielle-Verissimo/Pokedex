@@ -18,20 +18,3 @@ export const arrTypes = [
     {type: 'steel', typePtbr: 'metal', color: '#b8b8d0'},
     {type: 'fairy', typePtbr: 'fada', color: '#ed978f'}
 ];
-
-// function getAll(json){
-    
-//     const content = document.querySelector('.conteudo');
-//     const h2 = document.querySelector('.conteudo > h2');
-//     const divAll = document.createElement('div');
-//     h2.parentNode.removeChild(h2);
-//     divAll.classList.add('div-all');
-
-//     json.results.map(item => {
-//         console.log(item.url);
-//         fetch(item.url)
-//             .then(response => response.json())
-//             .then(json => customizeAll(json, content, divAll))
-//             .catch(e => console.log(e));
-//     })
-// }
