@@ -8,12 +8,17 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     display: flex;
     position: relative;
     width: 100vw;
     height: 100vh;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .page-landing {
     display: flex;
@@ -112,21 +117,22 @@ body {
     border-left: 2vh solid #FFFFFF;
     border-top: 2vh solid #FFFFFF;
     border-right: 2vh solid #FFFFFF;
-    border-bottom: 3vh solid #FFFFFF;
+    border-bottom: 2vh solid #FFFFFF;
 }
 #pesquisa {
     display: flex;
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 4vh;
-    margin-top: 5vh;
+    margin-left: 170px;
+    /* margin-top: 5vh; */
     opacity: 0.9;
 }
 #pesquisa input {
     display: flex;
-    position: relative;
+    /* position: relative; */
     align-items: center;
     justify-content: center;
     width: 40vw;
@@ -314,8 +320,9 @@ body {
     padding: 8px;
     transition: 0.5s;
     box-shadow: 1px 0.5px 1px black;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-bottom: 0;
+    margin-left: 10px;
 }
 
 .btn:hover{
@@ -329,14 +336,20 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 5px;
     flex-wrap: wrap;
-    width: 90%;
-    height: 360px;
-    margin-top: 50px;
-    padding: 40px;
+    width: 100%;
+    height: 505px;
+    /* margin-top: 30px; */
+    /* padding: 10px; */
     overflow: hidden;
-    border: solid 1px black;
+    /* border: solid 1px black; */
+    overflow-y: auto;
 }
+
+/* .div-all::-webkit-scrollbar{
+    display: none;
+} */
 
 
 .card {
@@ -345,12 +358,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 220px;
-    height: 280px;
+    width: 200px;
+    height: 240px;
     padding: 0;
     border-radius: 5px;
     box-shadow: 2px -2px 5px 0px black;
-    margin-bottom: 50px;
     transition: all 300ms ease-in-out;
 }
 
@@ -375,13 +387,14 @@ body {
 } */
 
 .card img {
-    width: 120px;
+    width: 100px;
     padding: 0;
+    margin: 0;
 }
 
 .card h1 {
     color: black;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
 }
 
@@ -405,7 +418,7 @@ body {
 .div-types h3 {
     font-weight: bold;
     font-size: 1.2rem;
-    margin-bottom: 5px;
+    margin-bottom: 7    px;
     text-align: center;
 }
 

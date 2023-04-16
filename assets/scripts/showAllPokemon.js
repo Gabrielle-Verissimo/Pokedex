@@ -1,7 +1,7 @@
 import { arrTypes } from "./typesObject.js";
 
 var urls = [];
-let counter = 4;
+let counter = 10;
 let i;
 
 export function showAllPokemons(api){
