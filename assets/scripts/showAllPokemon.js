@@ -1,79 +1,74 @@
 import { arrTypes } from "./typesObject.js";
 
 var urls = [];
-let counter = 10;
-let i;
+let counter = 20;
+let i = 10;
 
 export function showAllPokemons(api){
 
     const content = document.querySelector('.conteudo');
-    content.parentNode.removeChild(content);  
+    content.parentNode.removeChild(content); 
     fetch(api)
-    .then(response => response.json())
-    .then(json => getAll(json))
-    .catch(e => console.log(e));
+        .then(response => response.json())
+        .then(json => getAll(json))
+        .catch(e => console.log(e));
 }
 
 function getAll(json){
-    
+
     const tela = document.querySelector('.tela');
     const divAll = document.createElement('div');
     divAll.classList.add('div-all');
 
     json.results.map(item => urls.push(item.url));
 
-    for(i = 0; i < counter; i++) {
-        fetch(urls[i])
+    for(let x = 0; x < 10; x++) {
+        fetch(urls[x])
             .then(response => response.json())
-            .then(json => customizeAll(json, tela, divAll))
+            .then(json => renderAll(json, tela, divAll))
             .catch(e => console.log(e));
     }
-    
+  
 }
 
-const btnSkip = document.querySelector('#skip');
+var scrollSkip = 0;
+var scrollBack = 0;
 
-btnSkip.addEventListener('click', () => skip());
+const btnSkip = document.querySelector('#skip-page');
 
-function skip() {
+btnSkip.addEventListener('click', () => skipPage());
+
+function skipPage() {
     const tela = document.querySelector('.tela');
     const divAll = document.querySelector('.div-all');
-    const cards = document.querySelectorAll('.card');
 
-    for(let y = 0; y < cards.length; y++) {
-        cards[y].classList.add('passed');
+    for(let x = i; x < counter; x++) {
+        fetch(urls[x])
+            .then(response => response.json())
+            .then(json => renderAll(json, tela, divAll))
+            .catch(e => console.log(e));
     }
-    // let passedCounter = 0;
-    // let top = -150;
-    // let myInterval = setInterval(() => {   
-    //     top -= 123;
-    //     for(let y = 0; y < cards.length; y++) {
-    //         cards[y].style.marginTop = `${top}px`; 
-    //     }
-    //     passedCounter++;
-    //     if(passedCounter == 2){
-    //         console.log('entrou aqui', cards[0].style.marginTop);
-    //         clearInterval(myInterval);
-    //     }    
-    // }, 500);
 
-    let myTime = setTimeout(() => {
-        i = counter;
-        counter += 4;
-    
-        for(let x = i; x < counter; x++) {
-    
-            fetch(urls[x])
-                .then(response => response.json())
-                .then(json => customizeAll(json, tela, divAll))
-                .catch(e => console.log(e));
-        }
-    }, 1000);
-
+    i = counter;
+    counter += 10;
+    scrollSkip += 505;
+    scrollBack += 505;
+    // const scrollY = window.pageYOffset;
+    // console.log(scrollY);
 
 }
 
-function customizeAll(json, tela, divAll){
+const btnBack = document.querySelector('#back-page');
+
+btnBack.addEventListener('click', () => backPage());
+
+function backPage() {
+    const divAll = document.querySelector('.div-all');
+    scrollBack -= 505;
+    divAll.scrollTo(0, scrollBack);
+}
+
+function renderAll(json, tela, divAll){
 
     const imgPokemon = json.sprites.front_default;
     const pokemonId = '#' + [json.id];
@@ -123,5 +118,5 @@ function customizeAll(json, tela, divAll){
     divCard.classList.add('card');
     divAll.appendChild(divCard);
     tela.appendChild(divAll);
-
+    divAll.scrollTo(0, scrollSkip);
 }

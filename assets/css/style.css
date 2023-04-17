@@ -336,20 +336,31 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     flex-wrap: wrap;
     width: 100%;
     height: 505px;
     /* margin-top: 30px; */
-    /* padding: 10px; */
+    padding-top: 6px;
     overflow: hidden;
     /* border: solid 1px black; */
     overflow-y: auto;
 }
 
-/* .div-all::-webkit-scrollbar{
-    display: none;
-} */
+.div-all::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+  
+.div-all::-webkit-scrollbar-track {
+    background: #81D4FA ;     /* color of the tracking area */
+    
+}
+  
+.div-all::-webkit-scrollbar-thumb {
+    background-color: white;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #81D4FA ; /* creates padding around scroll thumb */
+  }
 
 
 .card {
@@ -361,6 +372,7 @@ body {
     width: 200px;
     height: 240px;
     padding: 0;
+    margin-bottom: 2px;
     border-radius: 5px;
     box-shadow: 2px -2px 5px 0px black;
     transition: all 300ms ease-in-out;
@@ -418,7 +430,7 @@ body {
 .div-types h3 {
     font-weight: bold;
     font-size: 1.2rem;
-    margin-bottom: 7    px;
+    margin-bottom: 7px;
     text-align: center;
 }
 
@@ -446,4 +458,13 @@ body {
 
 .list-types li::first-letter {
    text-transform: uppercase;
+}
+
+
+.btn-pass {
+    background-color: black;
+    border-radius: 7px;
+    color: white;
+    margin-right: 10px;
+    padding: 5px;
 }

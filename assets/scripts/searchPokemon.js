@@ -15,14 +15,14 @@ function findApi(json, pokemon){
             fetch(item.url)
                 .then(response => response.json())
                 .then(json => {
-                    customizePokemon(json);
+                    renderPokemon(json);
                 })
                 .catch(e => console.log(e));
         }
     })
 }
 
-function customizePokemon(json){
+function renderPokemon(json){
     // let types = [];
     // let abilities = [];
     let name = json.name;
