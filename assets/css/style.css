@@ -196,11 +196,11 @@ body {
         transform: rotate(180deg);
     }
 }
-.all {
-    display: flex;
-    position: relative;
-    justify-content: center;
-}
+// .all {
+//     display: flex;
+//     position: relative;
+//     justify-content: center;
+// }
 .btn-all {
     font-size: 1rem;
     color: #ffffff;

@@ -1,5 +1,5 @@
 import { arrTypes } from "./typesObject.js";
-
+//Consertar função Back
 var urls = [];
 let counter = 20;
 let i = 10;
@@ -16,7 +16,6 @@ export function showAllPokemons(api){
 
 function getAll(json){
 
-    const tela = document.querySelector('.tela');
     const divAll = document.createElement('div');
     divAll.classList.add('div-all');
 
@@ -25,7 +24,7 @@ function getAll(json){
     for(let x = 0; x < 10; x++) {
         fetch(urls[x])
             .then(response => response.json())
-            .then(json => renderAll(json, tela, divAll))
+            .then(json => createCard(json, divAll))
             .catch(e => console.log(e));
     }
   
@@ -33,19 +32,19 @@ function getAll(json){
 
 var scrollSkip = 0;
 var scrollBack = 0;
-
+var cards = [];
 const btnSkip = document.querySelector('#skip-page');
 
 btnSkip.addEventListener('click', () => skipPage());
 
 function skipPage() {
-    const tela = document.querySelector('.tela');
+
     const divAll = document.querySelector('.div-all');
 
     for(let x = i; x < counter; x++) {
         fetch(urls[x])
             .then(response => response.json())
-            .then(json => renderAll(json, tela, divAll))
+            .then(json => createCard(json, divAll))
             .catch(e => console.log(e));
     }
 
@@ -68,7 +67,7 @@ function backPage() {
     divAll.scrollTo(0, scrollBack);
 }
 
-function renderAll(json, tela, divAll){
+function createCard(json, divAll){
 
     const imgPokemon = json.sprites.front_default;
     const pokemonId = '#' + [json.id];
@@ -115,8 +114,22 @@ function renderAll(json, tela, divAll){
     divCard.appendChild(id);
     divCard.appendChild(tagName);
     divCard.appendChild(divTypes);
+    divCard.setAttribute('id', `${json.id}`);
     divCard.classList.add('card');
-    divAll.appendChild(divCard);
+    cards.push(divCard);
+    renderCard(divAll);
+
+}
+
+function renderCard(divAll) {
+    const tela = document.querySelector('.tela');
+    
+    cards.sort((a, b) => {
+        return a.id - b.id;
+    });
+
+    cards.map(item => divAll.appendChild(item));
+
     tela.appendChild(divAll);
     divAll.scrollTo(0, scrollSkip);
 }
