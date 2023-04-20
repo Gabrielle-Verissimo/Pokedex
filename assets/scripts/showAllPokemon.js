@@ -32,6 +32,7 @@ function getAll(json){
 
 var scrollSkip = 0;
 var scrollBack = 0;
+var page = 0;
 var cards = [];
 const btnSkip = document.querySelector('#skip-page');
 
@@ -51,7 +52,8 @@ function skipPage() {
     i = counter;
     counter += 10;
     scrollSkip += 505;
-    scrollBack += 505;
+    page++;
+    //scrollBack += 505;
     // const scrollY = window.pageYOffset;
     // console.log(scrollY);
 
@@ -63,8 +65,7 @@ btnBack.addEventListener('click', () => backPage());
 
 function backPage() {
     const divAll = document.querySelector('.div-all');
-    scrollBack -= 505;
-    divAll.scrollTo(0, scrollBack);
+    divAll.scrollBy(0, -505);
 }
 
 function createCard(json, divAll){
@@ -129,7 +130,6 @@ function renderCard(divAll) {
     });
 
     cards.map(item => divAll.appendChild(item));
-
     tela.appendChild(divAll);
     divAll.scrollTo(0, scrollSkip);
 }
